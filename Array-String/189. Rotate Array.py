@@ -7,14 +7,15 @@ class Solution:
             if len(nums) > k:
                 self.numsGreaterThanK(nums, k)
                
-            elif len(nums) == k: # If k equal to length of array or multiple of length of array, then -
+            elif len(nums) == k: # If k is equal to length of array or multiple of length of array, then -
                 pass             # the rotated array will be same as initial arr
-            
+
             else:
-                a=k//len(nums)  # Calculating to find value closest to k which is multiple of length of array,
-                b=len(nums)*a   # since as 2nd condition, the rotated array will be same as initial array
-                self.numsGreaterThanK(nums, k-b) # after finding closest value, we subtract it with k and send the
-                                                 # difference to the method that is for 1st condition  
+                # Calculating to find value closest to k which is multiple of length of array,
+                # since as 2nd condition, the rotated array will be same as initial array
+                # Here after mod operation, the remainder is the difference between k and closest value to k which is multiple of length of array
+                # And send ot to the method that is for 1st condition 
+                self.numsGreaterThanK(nums, k%len(nums))
         print(nums)
 
     def numsGreaterThanK(self, nums, k):
